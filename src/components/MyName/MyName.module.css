@@ -4,4 +4,23 @@
     background-color: #979797;
     font-weight: bold;
     text-decoration: underline;
+
 }
+
+.myNameBlock .specialQuality, .quality{
+    width: 10%;
+    margin: 0 auto;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.myNameBlock .specialQuality {
+    background-color: #61dafb;
+    font-style: italic;
+}
+
+.myNameBlock .quality {
+    background-color: #ff383f;
+}
+
+
