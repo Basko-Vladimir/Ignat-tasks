@@ -1,6 +1,22 @@
-.messageBlock {
+.messageWrap{
+    background: #68a3ff;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    width: 40%;
+    margin: 0 auto;
+
+}
+
+.messageWrap .avatar {
+    width: 70px;
+    border-radius: 50%;
+    align-self: flex-end;
+    margin-right: 30px;
+}
+
+.messageWrap .messageBlock {
     position: relative;
-    margin: 50px auto 0;
     width: 500px;
     height: auto;
     background-color: #f0f297;
@@ -9,7 +25,7 @@
     word-break: break-all;
 }
 
-.messageBlock:before {
+.messageWrap .messageBlock:before {
     content: ' ';
     position: absolute;
     width: 0;
@@ -20,16 +36,16 @@
     border-color: transparent #f0f297 #f0f297 transparent;
 }
 
-.messageBlock .senderName, .message, .time {
+.messageWrap .messageBlock .senderName, .message, .time {
     margin: 0;
     text-align: left;
 }
 
-.messageBlock .senderName {
+.messageWrap .messageBlock .senderName {
     color: #3862c9;
     margin-bottom: 10px;
 }
 
-.messageBlock .time {
+.messageWrap .messageBlock .time {
     text-align: right;
 }
