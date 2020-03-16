@@ -1,0 +1,11 @@
+.block{
+    width: 25%;
+    height: 100px;
+    margin: 50px auto 0;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
