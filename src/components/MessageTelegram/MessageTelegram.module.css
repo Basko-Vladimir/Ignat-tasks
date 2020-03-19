@@ -30,8 +30,8 @@
     position: absolute;
     width: 0;
     height: 0;
-    left: -3%;
-    top: 88%;
+    left: -15px;
+    bottom: 0;
     border: 12px solid;
     border-color: transparent #f0f297 #f0f297 transparent;
 }

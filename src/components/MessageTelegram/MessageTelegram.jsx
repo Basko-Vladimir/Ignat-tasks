@@ -10,7 +10,7 @@ const MessageTelegram = (props) => {
             <div className={styles.messageBlock}>
                 <h3 className={styles.senderName}>Басько Владимир</h3>
                 <p className={styles.message}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate deleniti est ipsa molestias nam odit placeat praesentium quod recusandae tempora.
-                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa </p>
+                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
                 <p className={styles.time}>{props.time}</p>
             </div>
         </div>
