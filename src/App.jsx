@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import MyName from "./components/MyName/MyName";
 import MessageTelegram from "./components/MessageTelegram/MessageTelegram";
-import Homework3 from "./components/Homework-3/Homework3";
+import Homework34 from "./components/Homework-3-4/Homework-3-4";
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <div className="App">
             <MyName/>
             <MessageTelegram time={time}/>
-            <Homework3/>
+            <Homework34/>
         </div>
     );
 }
