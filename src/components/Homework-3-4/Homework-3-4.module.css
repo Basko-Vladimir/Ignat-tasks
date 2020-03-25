@@ -10,4 +10,12 @@
     padding: 20px;
 }
 
+.block div {
+    margin: 5px;
+}
+
+.block .showNames{
+    text-align: left;
+}
+
 

@@ -6,11 +6,8 @@ import AddNameBtn from "./AddNameBtn/AddNameBtn";
 import ShowNames from "./ShowNames/ShowNames";
 
 class Homework34 extends React.Component {
-    constructor(props) {
-        super(props);
-        this.inputValue = React.createRef();
-        this.spanValue = React.createRef();
-    }
+    inputValue = React.createRef();
+    spanValue = React.createRef();
 
     addName = () => {
         let inputValue = this.inputValue.current.value;
@@ -30,7 +27,7 @@ class Homework34 extends React.Component {
         return (
             <div className={styles.block}>
                 <SumNames spanValue={this.spanValue} names={this.state.names}/>
-                <div className={styles.inputBlock}>
+                <div>
                     <NameInput inputValue={this.inputValue}/>
                     <AddNameBtn addName={this.addName}/>
                 </div>
