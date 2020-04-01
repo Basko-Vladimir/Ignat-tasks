@@ -1,22 +1,23 @@
 import React from 'react';
 import './App.css';
-import MyName from "./components/MyName/MyName";
-import MessageTelegram from "./components/MessageTelegram/MessageTelegram";
-import Homework34 from "./components/Homework-3-4/Homework-3-4";
+import Monday from "./components/Monday/Monday";
+import Tuesday from "./components/Tuesday/Tuesday";
+import Navbar from "./components/Navbar/Navbar";
+import {Route} from "react-router-dom";
+import Wednesday from "./components/Wednesday/Wednesday";
+import Thursday from "./components/Thursday/Thursday";
 
 
 function App() {
-    let date = new Date();
-    let hours = date.getHours();
-    let min = date.getMinutes();
-    hours = (hours < 10) ? `0${hours}` : hours;
-    min = (min < 10) ? `0${min}` : min;
-    let time = `${hours}:${min}`;
     return (
         <div className="App">
-            <MyName/>
-            <MessageTelegram time={time}/>
-            <Homework34/>
+            <Navbar/>
+            <div>
+                <Route path={'/monday'} render={() => <Monday/>} />
+                <Route path={'/tuesday'} render={() => <Tuesday/>} />
+                <Route path={'/wednesday'} render={() => <Wednesday/>} />
+                <Route path={'/thursday'} render={() => <Thursday/>} />
+            </div>
         </div>
     );
 }

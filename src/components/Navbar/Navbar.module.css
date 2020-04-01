@@ -1,0 +1,50 @@
+.navbar, .showMenu{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: calc(50% - 300px);
+    top:-70px;
+}
+
+.showMenu {
+    top:0;
+}
+
+.daysBlock{
+    width: 600px;
+    height: 70px;
+    background-color:#dc9180;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.title {
+    background-color: #dc9180;
+    padding: 2px 10px;
+    align-self: center;
+    font-weight: bolder;
+    color: #3862c9;
+}
+
+.titleHide{
+    display: none;
+}
+
+.title:hover {
+    cursor: pointer;
+}
+
+.daysBlock .link{
+    text-decoration: none;
+    color:#3862c9;
+}
+
+.daysBlock .active{
+    font-weight: bolder;
+    font-size: 18px;
+    color: #28ff24;
+}
+
+
+
