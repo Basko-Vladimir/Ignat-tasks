@@ -1,18 +1,18 @@
-.App {
-
+.tuesday {
+  text-align: center;
 }
 
 .todoList {
-  width: 500px;
+  width: 400px;
   margin: 0 auto;
+}
+
+.todoList-task{
+  text-align: left;
 }
 
 .todoList > div {
   padding: 10px;
-}
-
-.todoList-task {
-
 }
 
 .filter-active {

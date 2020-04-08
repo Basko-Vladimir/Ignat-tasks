@@ -16,9 +16,9 @@ class TodoListHeader extends React.Component {
             })
         } else {
             this.props.addTask(newText);
-            this.state.title = '';
             this.setState({
-                error: false
+                error: false,
+                title: ''
             })
         }
     };
@@ -46,7 +46,7 @@ class TodoListHeader extends React.Component {
                     <input type="text"
                            value={this.state.title}
                            placeholder="New task name"
-                           className={this.state.error && 'error' }
+                           className={this.state.error ? 'error' : '' }
                            onChange={(e) => this.onChangeInput(e)}
                            onKeyPress={(e) => this.onKeyPress(e)}/>
                     <button onClick={this.onAddTask}>Add</button>

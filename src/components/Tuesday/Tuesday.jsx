@@ -3,33 +3,17 @@ import './Tuesday.css';
 import TodoListHeader from "./TodoListHeader/TodoListHeader";
 import TodoListTasks from "./TodoListTasks/TodoListTasks";
 import TodoListFooter from "./TodoListFooter/TodoListFooter";
+import {saveState, restoreState} from "./useLocalStorage";
+
 
 class Tuesday extends React.Component {
     componentDidMount() {
-        this.restoreState();
+        this.setState(restoreState('our-state', this.state));
     }
     state = {
         tasks: [],
         filterValue: "All",
-    };
-    nextTaskId = 0;
-
-    saveState = () => {
-        let stateAsString = JSON.stringify(this.state);
-        localStorage.setItem('our-state', stateAsString);
-    };
-
-    restoreState = () => {
-        let stateAsString = localStorage.getItem('our-state');
-        if (stateAsString != null) {
-            this.state = JSON.parse(stateAsString);
-            this.state.tasks.forEach( t => {
-                if (t.id >= this.nextTaskId){
-                    this.nextTaskId = t.id + 1;
-                }
-            });
-            this.setState(this.state);
-        }
+        nextTaskId: 0
     };
 
     changeTask = (taskId, obj) => {
@@ -42,7 +26,7 @@ class Tuesday extends React.Component {
         });
         this.setState({
             tasks:newTasks
-        }, () => this.saveState() )
+        }, () => saveState('our-state', this.state) )
     };
 
     changeStatus = (taskId, isDone) => {
@@ -57,21 +41,21 @@ class Tuesday extends React.Component {
         let newTasks = this.state.tasks.filter( t => t.id !== taskId);
         this.setState({
             tasks: newTasks
-        }, () => this.saveState() )
+        }, () => saveState('our-state', this.state) )
     };
 
     onAddTaskClick = (newText) => {
         let newTask = {
-            id: this.nextTaskId,
+            id: this.state.nextTaskId,
             title: newText,
             isDone: false,
             priority: "low"
         };
-        this.nextTaskId++;
         let newTasks = [...this.state.tasks, newTask];
         this.setState( {
             tasks: newTasks,
-        }, () => this.saveState() );
+            nextTaskId: this.state.nextTaskId + 1
+        }, () => saveState('our-state', this.state) );
     };
 
     changeFilter = (newFilterValue) => {
@@ -82,7 +66,7 @@ class Tuesday extends React.Component {
 
     render = () => {
         return (
-            <div className="App">
+            <div className="tuesday">
                 <div className="todoList">
                     <TodoListHeader addTask={this.onAddTaskClick}/>
                     <TodoListTasks  changeStatus={this.changeStatus}
@@ -92,6 +76,7 @@ class Tuesday extends React.Component {
                                         case 'All':  return true;
                                         case 'Active': return t.isDone;
                                         case 'Completed': return !t.isDone;
+                                        default: return alert('error');
                                     }})}/>
                     <TodoListFooter changeFilter={this.changeFilter} filterValue={this.state.filterValue} />
                 </div>
