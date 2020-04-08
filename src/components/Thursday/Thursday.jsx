@@ -1,8 +1,8 @@
 import React from "react";
 
-const Thursday = () => {
+const Tuesday = () => {
     return (
         <div>Here will be tasks from thursday</div>
     )
 };
-export default Thursday;
+export default Tuesday;
