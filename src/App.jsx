@@ -6,20 +6,40 @@ import Navbar from "./components/Navbar/Navbar";
 import {Route} from "react-router-dom";
 import Wednesday from "./components/Wednesday/Wednesday";
 import Thursday from "./components/Thursday/Thursday";
+import Preloader from "./components/Tuesday/Preloader/Preloader";
 
 
-function App() {
-    return (
-        <div className="App">
-            <Navbar/>
-            <div>
-                <Route path={'/monday'} render={() => <Monday/>} />
-                <Route path={'/tuesday'} render={() => <Tuesday/>} />
-                <Route path={'/wednesday'} render={() => <Wednesday/>} />
-                <Route path={'/thursday'} render={() => <Thursday/>} />
+class App extends React.Component {
+    state = {
+        isLoading: true
+    };
+
+    componentDidMount() {
+        setTimeout(this.changeIsLoading, 3000);
+    }
+
+    changeIsLoading = () => {
+        this.setState({isLoading: false})
+    };
+
+    render() {
+        return (
+            <div className="App">
+                { this.state.isLoading
+                ? <Preloader/>
+                : <div>
+                    <Navbar/>
+                    <div>
+                        <Route path={'/monday'} render={() => <Monday/>} />
+                        <Route path={'/tuesday'} render={() => <Tuesday/>} />
+                        <Route path={'/wednesday'} render={() => <Wednesday/>} />
+                        <Route path={'/thursday'} render={() => <Thursday/>} />
+                    </div>
+                </div>
+                }
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default App;
