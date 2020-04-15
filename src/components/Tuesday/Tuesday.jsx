@@ -64,12 +64,17 @@ class Tuesday extends React.Component {
         })
     };
 
+    changeTaskPriority = (priority, taskId) => {
+        this.changeTask(taskId, {priority});
+    };
+
     render = () => {
         return (
             <div className="tuesday">
                 <div className="todoList">
                     <TodoListHeader addTask={this.onAddTaskClick}/>
                     <TodoListTasks  changeStatus={this.changeStatus}
+                                    changeTaskPriority={this.changeTaskPriority}
                                     changeTitle={this.changeTitle}
                                     deleteTask={this.deleteTask}
                                     tasks={this.state.tasks.filter( t => { switch (this.state.filterValue) {

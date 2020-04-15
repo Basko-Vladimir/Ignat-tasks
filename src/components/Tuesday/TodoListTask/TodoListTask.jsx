@@ -3,7 +3,7 @@ import '../Tuesday.css';
 
 class TodoListTask extends React.Component {
     state = {
-        editMode: false
+        editMode: false,
     };
 
     onIsDoneChanged = (event) => {
@@ -26,22 +26,52 @@ class TodoListTask extends React.Component {
         this.props.deleteTask(this.props.task.id);
     };
 
+    onChangePriority = (e) => {
+        this.props.changeTaskPriority(e.currentTarget.value, this.props.task.id)
+    };
+
+    classPriorityTask = (priority) => {
+        switch (priority) {
+            case 'low':
+                return 'lowPriority';
+            case 'middle':
+                return 'middlePriority';
+            case 'high':
+                return 'highPriority';
+            default: return '';
+        }
+    };
+
+
     render = () => {
         return (
-                <div className={this.props.task.isDone ? `todoList-task done` : `todoList-task`}>
+                <div className={this.props.task.isDone ? `todoList-task done` : `todoList-task ${this.classPriorityTask(this.props.task.priority)}`}>
                     <input type="checkbox" checked={this.props.task.isDone}
                            onChange={this.onIsDoneChanged}/>
-                    { this.state.editMode
-                        ? <input autoFocus={true}
-                                 value={this.props.task.title}
-                                 onBlur={this.deactivateEditMode}
-                                 onChange={this.onTitleChanged}/>
-                        : <span onClick={this.activeEditMode}>{`${this.props.task.id} - ${this.props.task.title}`}, priority: {this.props.task.priority}</span>
-                    }   <button onClick={this.onDeleteTask}>Delete</button>
+                    <div>
+                        { this.state.editMode
+                            ? <input autoFocus={true}
+                                     value={this.props.task.title}
+                                     onBlur={this.deactivateEditMode}
+                                     onChange={this.onTitleChanged}/>
+                            : <span onClick={this.activeEditMode}>{`${this.props.task.id} - ${this.props.task.title}` }</span>
+                        }
+                    </div>
+                    <div>
+                        <span> Priority: <select value={this.props.task.priority} onChange={this.onChangePriority}>
+                                            <option value={'low'}>low</option>
+                                            <option value={'middle'}>middle</option>
+                                            <option value={'high'}>high</option>
+                                        </select>
+                        </span>
+                    </div>
+                    <div>
+                        <button onClick={this.onDeleteTask}>Delete</button>
+                    </div>
                 </div>
         );
     }
 }
 
 export default TodoListTask;
-
+// this.classPriorityTask(this.props.task.priority)

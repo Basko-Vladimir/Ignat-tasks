@@ -3,12 +3,41 @@
 }
 
 .todoList {
-  width: 400px;
+  width: 500px;
   margin: 0 auto;
 }
 
 .todoList-task{
   text-align: left;
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  margin-top: 5px;
+}
+
+.todoList-task.lowPriority {
+  background-color: #8cee8e;
+}
+
+.todoList-task.middlePriority {
+  background-color: #efe35f;
+}
+
+.todoList-task.highPriority {
+  background-color: #ee4840;
+}
+
+.todoList-task div{
+  width: 200px;
+  text-align: left;
+}
+
+.todoList-task div:last-child{
+  text-align: center;
+}
+
+.todoList-task button{
+  height: 20px;
 }
 
 .todoList > div {
@@ -26,3 +55,4 @@
 .todoList-task.done {
   opacity: 0.5;
 }
+
