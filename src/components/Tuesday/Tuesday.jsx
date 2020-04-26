@@ -4,6 +4,7 @@ import TodoListHeader from "./TodoListHeader/TodoListHeader";
 import TodoListTasks from "./TodoListTasks/TodoListTasks";
 import TodoListFooter from "./TodoListFooter/TodoListFooter";
 import {saveState, restoreState} from "./useLocalStorage";
+import {operationsDate} from "../../common/dateOperations";
 
 
 class Tuesday extends React.Component {
@@ -18,7 +19,7 @@ class Tuesday extends React.Component {
     };
 
     changeTask = (taskId, obj) => {
-        let changingDate = this.getDate();
+        let changingDate = operationsDate.getCurrentDate();
         let newTasks = this.state.tasks.map( t => {
             if (t.id === taskId && obj.isDone){
                 return {...t, ...obj, finished: changingDate}
@@ -49,7 +50,7 @@ class Tuesday extends React.Component {
     };
 
     onAddTaskClick = (newText) => {
-        let creatingDate = this.getDate();
+        let creatingDate = operationsDate.getCurrentDate();
         let newTask = {
             id: this.state.nextTaskId,
             title: newText,
@@ -62,33 +63,6 @@ class Tuesday extends React.Component {
             tasks: newTasks,
             nextTaskId: this.state.nextTaskId + 1
         }, () => saveState('our-state', this.state) );
-    };
-
-    getDate = () => {
-        let currentDate = new Date();
-
-        let date = +currentDate.getDate();
-        date = this.dateFormatCorrect(date);
-
-        let month = +currentDate.getMonth() + 1;
-        month = this.dateFormatCorrect(month);
-
-        let year = +currentDate.getFullYear();
-
-        let hours = +currentDate.getHours();
-        hours = this.dateFormatCorrect(hours);
-
-        let minutes = +currentDate.getMinutes();
-        minutes = this.dateFormatCorrect(minutes);
-
-        return `${date}.${month}.${year} ${hours}:${minutes}`
-    };
-
-    dateFormatCorrect = (value) => {
-        if (value < 10) {
-            value = `0${value}`
-        }
-        return value
     };
 
     changeFilter = (newFilterValue) => {
