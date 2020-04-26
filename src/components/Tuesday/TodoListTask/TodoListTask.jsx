@@ -42,10 +42,16 @@ class TodoListTask extends React.Component {
         }
     };
 
+    showChangingDate = () => {
+        let creatingDate = this.props.task.created;
+        let updatedDate = this.props.task.updated ? this.props.task.updated : `Задача не изменялась`;
+        let finishedDate = this.props.task.finished ? this.props.task.finished : `Задание не выполнено`;
+        return `Дата создания : ${creatingDate} \nДата изменения: ${updatedDate} \n${this.props.task.isDone ? 'Задание выполнено: ' + finishedDate : ''}`;
+    };
 
     render = () => {
         return (
-                <div className={this.props.task.isDone ? `todoList-task done` : `todoList-task ${this.classPriorityTask(this.props.task.priority)}`}>
+                <div title={this.showChangingDate()} className={this.props.task.isDone ? `todoList-task done` : `todoList-task ${this.classPriorityTask(this.props.task.priority)}`}>
                     <input type="checkbox" checked={this.props.task.isDone}
                            onChange={this.onIsDoneChanged}/>
                     <div>

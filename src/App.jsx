@@ -15,7 +15,7 @@ class App extends React.Component {
     };
 
     componentDidMount() {
-        setTimeout(this.changeIsLoading, 3000);
+        setTimeout(this.changeIsLoading, 1000);
     }
 
     changeIsLoading = () => {

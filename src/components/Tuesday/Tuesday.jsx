@@ -10,6 +10,7 @@ class Tuesday extends React.Component {
     componentDidMount() {
         this.setState(restoreState('our-state', this.state));
     }
+
     state = {
         tasks: [],
         filterValue: "All",
@@ -17,9 +18,12 @@ class Tuesday extends React.Component {
     };
 
     changeTask = (taskId, obj) => {
+        let changingDate = this.getDate();
         let newTasks = this.state.tasks.map( t => {
-            if (t.id === taskId){
-                return {...t, ...obj}
+            if (t.id === taskId && obj.isDone){
+                return {...t, ...obj, finished: changingDate}
+            } else if (t.id === taskId) {
+                return {...t, ...obj, updated: changingDate}
             } else {
                 return t
             }
@@ -45,17 +49,46 @@ class Tuesday extends React.Component {
     };
 
     onAddTaskClick = (newText) => {
+        let creatingDate = this.getDate();
         let newTask = {
             id: this.state.nextTaskId,
             title: newText,
             isDone: false,
-            priority: "low"
+            priority: "low",
+            created: creatingDate
         };
         let newTasks = [...this.state.tasks, newTask];
         this.setState( {
             tasks: newTasks,
             nextTaskId: this.state.nextTaskId + 1
         }, () => saveState('our-state', this.state) );
+    };
+
+    getDate = () => {
+        let currentDate = new Date();
+
+        let date = +currentDate.getDate();
+        date = this.dateFormatCorrect(date);
+
+        let month = +currentDate.getMonth() + 1;
+        month = this.dateFormatCorrect(month);
+
+        let year = +currentDate.getFullYear();
+
+        let hours = +currentDate.getHours();
+        hours = this.dateFormatCorrect(hours);
+
+        let minutes = +currentDate.getMinutes();
+        minutes = this.dateFormatCorrect(minutes);
+
+        return `${date}.${month}.${year} ${hours}:${minutes}`
+    };
+
+    dateFormatCorrect = (value) => {
+        if (value < 10) {
+            value = `0${value}`
+        }
+        return value
     };
 
     changeFilter = (newFilterValue) => {
@@ -77,11 +110,16 @@ class Tuesday extends React.Component {
                                     changeTaskPriority={this.changeTaskPriority}
                                     changeTitle={this.changeTitle}
                                     deleteTask={this.deleteTask}
-                                    tasks={this.state.tasks.filter( t => { switch (this.state.filterValue) {
-                                        case 'All':  return true;
-                                        case 'Active': return t.isDone;
-                                        case 'Completed': return !t.isDone;
-                                        default: return alert('error');
+                                    tasks={this.state.tasks.filter( t => {
+                                        switch (this.state.filterValue) {
+                                            case 'All':
+                                                return true;
+                                            case 'Active':
+                                                return t.isDone;
+                                            case 'Completed':
+                                                return !t.isDone;
+                                            default:
+                                                return alert('error');
                                     }})}/>
                     <TodoListFooter changeFilter={this.changeFilter} filterValue={this.state.filterValue} />
                 </div>
