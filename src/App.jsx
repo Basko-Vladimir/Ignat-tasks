@@ -8,17 +8,18 @@ import Wednesday from "./components/Wednesday/Wednesday";
 import Thursday from "./components/Thursday/Thursday";
 import Preloader from "./components/Tuesday/Preloader/Preloader";
 import {connect} from "react-redux";
-import {setLoadingAC} from "./redux/store";
+import {setLoading} from "./redux/loading-reducer";
+
 
 class App extends React.Component {
     componentDidMount() {
-        setTimeout(() => this.props.setLoading(false), 3000);
+        setTimeout(() => this.props.setLoading(false), 1000);
     }
 
     render() {
         return (
             <div className="App">
-                { this.props.loading
+                { this.props.isLoading
                 ? <Preloader/>
                 : <div>
                     <Navbar/>
@@ -37,16 +38,8 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.loading
+        isLoading: state.loading.isLoading
     }
 };
 
-const  mapDispatchToProps = (dispatch) => {
-    return {
-        setLoading: (loadingValue) => {
-            dispatch(setLoadingAC(loadingValue))
-        }
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, {setLoading})(App);

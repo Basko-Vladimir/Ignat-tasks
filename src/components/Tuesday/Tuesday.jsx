@@ -3,7 +3,7 @@ import './Tuesday.css';
 import TodoListHeader from "./TodoListHeader/TodoListHeader";
 import TodoListTasks from "./TodoListTasks/TodoListTasks";
 import TodoListFooter from "./TodoListFooter/TodoListFooter";
-import {saveState, restoreState} from "./useLocalStorage";
+import {saveState, restoreState} from "../../common/useLocalStorage";
 import {operationsDate} from "../../common/dateOperations";
 
 

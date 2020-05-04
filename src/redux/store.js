@@ -1,24 +1,11 @@
-import {createStore} from "redux";
+import {combineReducers, createStore} from "redux";
+import loadingReducer from "./loading-reducer";
+import settingsReducer from "./settings-reducer";
 
-const SET_LOADING = 'SET_LOADING';
+const Reducers = combineReducers({
+    loading: loadingReducer,
+    settings: settingsReducer
+});
 
-const initialState = {
-    loading: true
-};
-
-const reducer = (state = initialState, action) => {
-    switch (action.type) {
-        case SET_LOADING:
-            return {
-                ...state,
-                loading: action.loadingValue
-            };
-        default:
-            return state;
-    }
-};
-
-export const setLoadingAC = (loadingValue) => ({type: SET_LOADING, loadingValue});
-
-const store = createStore(reducer);
+const store = createStore(Reducers);
 export default store;

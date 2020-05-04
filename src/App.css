@@ -1,6 +1,38 @@
 .App {
-  text-align: center;
-  position: relative;
-  padding-top:100px;
+    text-align: center;
+    position: relative;
+    padding-top: 100px;
 }
 
+.wednesday {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    padding-top: 100px;
+    z-index: -1;
+}
+
+.wednesday .themeChoose {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.wednesday .themeChoose label {
+    cursor: pointer;
+}
+
+.dark {
+    background-color: #2e425f;
+    color: #ffffff;
+}
+
+.light {
+    background-color: #c8fff8;
+    color: #2e425f;
+}
+
+.color {
+    background: linear-gradient(90deg, red 0%, orange 25%, yellow 50%, green 75%, blue 100%);
+    color: #5163db;
+}
