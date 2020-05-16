@@ -15,7 +15,7 @@
 
 .wednesday .themeChoose {
     width: 50%;
-    margin: 0 auto;
+    margin: 0 auto 50px;
 }
 
 .wednesday .themeChoose label {
@@ -36,3 +36,28 @@
     background: linear-gradient(90deg, red 0%, orange 25%, yellow 50%, green 75%, blue 100%);
     color: #5163db;
 }
+
+.checkboxBlock {
+    cursor: pointer;
+}
+
+
+.sendButtonBlock{
+    margin-top: 20px;
+}
+
+.sendButtonBlock button {
+    width: 80px;
+    height: 30px;
+    color:#ffffff;
+    border: none;
+    border-radius: 3px;
+    background-color:#2e425f;
+    cursor: pointer;
+}
+
+.sendButtonBlock button:active {
+    transform: scale(0.95);
+}
+
+

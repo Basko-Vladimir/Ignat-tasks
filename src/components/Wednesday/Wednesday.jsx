@@ -1,12 +1,34 @@
 import React from "react";
 import "../../App.css";
-import {setTheme} from "../../redux/settings-reducer";
+import {setTheme, updateCheckbox} from "../../redux/settings-reducer";
 import {connect} from "react-redux";
+import axios from "axios";
 
 const Wednesday = (props) => {
     const onSetTheme = (e) => {
         props.setTheme(e.currentTarget.value);
 
+    };
+
+    const changeCheckbox = (e) => {
+        props.updateCheckbox(e.currentTarget.checked)
+    };
+
+    const sendMessage = () => {
+        return axios.post('https://neko-cafe-back.herokuapp.com/auth/test', {success: props.isChecked})
+            .then(response => response)
+            .catch(error => error.response)
+    };
+
+    const tryCatch = async (func) => {
+        try{
+            const response = await func();
+            console.log('answer:', response.data);
+            return response;
+        } catch(err) {
+            console.log('error:', {...err}, err.name, err.message);
+            return err;
+        }
     };
 
     return (
@@ -27,14 +49,25 @@ const Wednesday = (props) => {
                     Color theme
                 </label>
             </div>
+            <div>
+                <label className={'checkboxBlock'}>
+                    <input type="checkbox" value={props.isChecked} onChange={changeCheckbox} />
+                    Choose true or false for send
+                </label>
+                <div className={'sendButtonBlock'}>
+                    <button onClick={() => tryCatch(sendMessage)}> Send</button>
+                </div>
+
+            </div>
         </div>
     )
 };
 
 const mapStateToProps = (state) => {
     return {
-        themeStyle: state.settings.style
+        themeStyle: state.settings.style,
+        isChecked: state.settings.isChecked
     }
 };
 
-export default connect(mapStateToProps, {setTheme})(Wednesday);
+export default connect(mapStateToProps, {setTheme, updateCheckbox})(Wednesday);
