@@ -16,8 +16,6 @@ const Wednesday = (props) => {
 
     const sendMessage = () => {
         return axios.post('https://neko-cafe-back.herokuapp.com/auth/test', {success: props.isChecked})
-            .then(response => response)
-            .catch(error => error.response)
     };
 
     const tryCatch = async (func) => {
@@ -26,7 +24,7 @@ const Wednesday = (props) => {
             console.log('answer:', response.data);
             return response;
         } catch(err) {
-            console.log('error:', {...err}, err.name, err.message);
+            console.log('error:', {...err}, err.name + ' -', err.message);
             return err;
         }
     };
