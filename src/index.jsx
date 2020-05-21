@@ -15,3 +15,5 @@ ReactDOM.render(
     </HashRouter>, document.getElementById('root'));
 
 serviceWorker.unregister();
+
+window.store = store;

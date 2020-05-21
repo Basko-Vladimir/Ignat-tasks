@@ -4,6 +4,12 @@
     padding-top: 100px;
 }
 
+.mainPreloader {
+    position: absolute;
+    top: calc(50vh - 50px);
+    left: calc(50% - 50px);
+}
+
 .wednesday {
     position: absolute;
     top: 0;
@@ -46,18 +52,40 @@
     margin-top: 20px;
 }
 
-.sendButtonBlock button {
-    width: 80px;
-    height: 30px;
-    color:#ffffff;
-    border: none;
-    border-radius: 3px;
-    background-color:#2e425f;
-    cursor: pointer;
-}
-
 .sendButtonBlock button:active {
     transform: scale(0.95);
 }
+
+.wednesdayPreloader {
+    position: absolute;
+    top: calc(50vh - 50px);
+    left: calc(50% - 50px);
+}
+
+.messageBlock {
+    width: 300px;
+    height: 150px;
+    position: absolute;
+    left: calc(50% - 150px);
+    top: 20vh;
+    z-index: 2;
+    box-shadow: 0 0 10px #040204 ;
+    border: 3px dashed dodgerblue;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.messageSuccess {
+    color: green;
+}
+
+.messageError {
+    color:red;
+}
+
+
 
 

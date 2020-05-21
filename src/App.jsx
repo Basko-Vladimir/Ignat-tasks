@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import {Route} from "react-router-dom";
 import Wednesday from "./components/Wednesday/Wednesday";
 import Thursday from "./components/Thursday/Thursday";
-import Preloader from "./components/Tuesday/Preloader/Preloader";
+import Preloader from "./common/Preloader/Preloader";
 import {connect} from "react-redux";
 import {setLoading} from "./redux/loading-reducer";
 
@@ -20,7 +20,9 @@ class App extends React.Component {
         return (
             <div className="App">
                 { this.props.isLoading
-                ? <Preloader/>
+                ? <div className={'mainPreloader'}>
+                    <Preloader/>
+                  </div>
                 : <div>
                     <Navbar/>
                     <div>
