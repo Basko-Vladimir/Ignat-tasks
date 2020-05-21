@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/Ignat-tasks/static/css/main.3e6e94dd.chunk.css",
-    "main.js": "/Ignat-tasks/static/js/main.0f9431ca.chunk.js",
-    "main.js.map": "/Ignat-tasks/static/js/main.0f9431ca.chunk.js.map",
-    "runtime-main.js": "/Ignat-tasks/static/js/runtime-main.4628213f.js",
-    "runtime-main.js.map": "/Ignat-tasks/static/js/runtime-main.4628213f.js.map",
-    "static/js/2.ac5a7d0e.chunk.js": "/Ignat-tasks/static/js/2.ac5a7d0e.chunk.js",
-    "static/js/2.ac5a7d0e.chunk.js.map": "/Ignat-tasks/static/js/2.ac5a7d0e.chunk.js.map",
+    "main.css": "/Ignat-tasks/static/css/main.e8b729fe.chunk.css",
+    "main.js": "/Ignat-tasks/static/js/main.9221aea5.chunk.js",
+    "main.js.map": "/Ignat-tasks/static/js/main.9221aea5.chunk.js.map",
+    "runtime-main.js": "/Ignat-tasks/static/js/runtime-main.6866f146.js",
+    "runtime-main.js.map": "/Ignat-tasks/static/js/runtime-main.6866f146.js.map",
+    "static/js/2.ea7c8b5b.chunk.js": "/Ignat-tasks/static/js/2.ea7c8b5b.chunk.js",
+    "static/js/2.ea7c8b5b.chunk.js.map": "/Ignat-tasks/static/js/2.ea7c8b5b.chunk.js.map",
     "index.html": "/Ignat-tasks/index.html",
-    "precache-manifest.99b37b3724cdc1b29da76295d31c69be.js": "/Ignat-tasks/precache-manifest.99b37b3724cdc1b29da76295d31c69be.js",
+    "precache-manifest.04eba0b4e3e9b0e72e1e0a5f2325ae60.js": "/Ignat-tasks/precache-manifest.04eba0b4e3e9b0e72e1e0a5f2325ae60.js",
     "service-worker.js": "/Ignat-tasks/service-worker.js",
-    "static/css/main.3e6e94dd.chunk.css.map": "/Ignat-tasks/static/css/main.3e6e94dd.chunk.css.map",
-    "static/js/2.ac5a7d0e.chunk.js.LICENSE.txt": "/Ignat-tasks/static/js/2.ac5a7d0e.chunk.js.LICENSE.txt",
-    "static/media/preloader.gif": "/Ignat-tasks/static/media/preloader.ec100451.gif"
+    "static/css/main.e8b729fe.chunk.css.map": "/Ignat-tasks/static/css/main.e8b729fe.chunk.css.map",
+    "static/js/2.ea7c8b5b.chunk.js.LICENSE.txt": "/Ignat-tasks/static/js/2.ea7c8b5b.chunk.js.LICENSE.txt",
+    "static/media/preloader.gif": "/Ignat-tasks/static/media/preloader.a0bbebe6.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.4628213f.js",
-    "static/js/2.ac5a7d0e.chunk.js",
-    "static/css/main.3e6e94dd.chunk.css",
-    "static/js/main.0f9431ca.chunk.js"
+    "static/js/runtime-main.6866f146.js",
+    "static/js/2.ea7c8b5b.chunk.js",
+    "static/css/main.e8b729fe.chunk.css",
+    "static/js/main.9221aea5.chunk.js"
   ]
 }
