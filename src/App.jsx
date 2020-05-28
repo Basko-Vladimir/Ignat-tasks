@@ -6,24 +6,14 @@ import Navbar from "./components/Navbar/Navbar";
 import {Route} from "react-router-dom";
 import Wednesday from "./components/Wednesday/Wednesday";
 import Thursday from "./components/Thursday/Thursday";
-import Preloader from "./common/Preloader/Preloader";
 import {connect} from "react-redux";
 import {setLoading} from "./redux/loading-reducer";
 
-
 class App extends React.Component {
-    componentDidMount() {
-        setTimeout(() => this.props.setLoading(false), 1000);
-    }
-
     render() {
         return (
             <div className="App">
-                { this.props.isLoading
-                ? <div className={'mainPreloader'}>
-                    <Preloader/>
-                  </div>
-                : <div>
+                <div>
                     <Navbar/>
                     <div>
                         <Route path={'/monday'} render={() => <Monday/>} />
@@ -32,7 +22,6 @@ class App extends React.Component {
                         <Route path={'/thursday'} render={() => <Thursday/>} />
                     </div>
                 </div>
-                }
             </div>
         );
     }
