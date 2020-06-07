@@ -37,7 +37,7 @@ class Wednesday extends React.Component<PropsType> {
         this.props.updateCheckboxSuccess(event.currentTarget.checked)
     };
 
-    sendMessage = async () => {
+    sendMessage = () => {
         this.props.sendMessage(this.props.isChecked);
     };
 
@@ -96,7 +96,6 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
         status: state.loading.status,
         isLoading: state.loading.isLoading,
         responseMessage: state.loading.responseMessage,
-
     }
 };
 
