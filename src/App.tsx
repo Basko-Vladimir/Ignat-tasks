@@ -7,9 +7,14 @@ import {Route} from "react-router-dom";
 import Wednesday from "./components/Wednesday/Wednesday";
 import Thursday from "./components/Thursday/Thursday";
 import {connect} from "react-redux";
-import {setLoading} from "./redux/loading-reducer";
+import {setLoadingSuccess} from "./redux/loading-reducer";
+import {AppStateType} from "./redux/store";
 
-class App extends React.Component {
+type MapStatePropsType = {
+    isLoading: boolean
+}
+
+class App extends React.Component<MapStatePropsType> {
     render() {
         return (
             <div className="App">
@@ -27,10 +32,10 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         isLoading: state.loading.isLoading
     }
 };
 
-export default connect(mapStateToProps, {setLoading})(App);
+export default connect<MapStatePropsType, {}, {}, AppStateType>(mapStateToProps, {setLoadingSuccess})(App);

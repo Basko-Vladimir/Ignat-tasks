@@ -16,4 +16,5 @@ ReactDOM.render(
 
 serviceWorker.unregister();
 
+//@ts-ignore
 window.store = store;

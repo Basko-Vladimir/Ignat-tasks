@@ -1,18 +1,40 @@
-import React from "react";
+import React, { ChangeEvent, MouseEvent } from "react";
 import "../../App.css";
-import {setTheme} from "../../redux/settings-reducer";
+import {setThemeSuccess} from "../../redux/settings-reducer";
 import {connect} from "react-redux";
-import {sendMessage, setResponseMessage, updateCheckbox} from "../../redux/loading-reducer";
+import {
+    sendMessage,
+    setResponseMessageSuccess,
+    updateCheckboxSuccess
+} from "../../redux/loading-reducer";
 import Preloader from "../../common/Preloader/Preloader";
+import {AppStateType} from "../../redux/store";
 
-class Wednesday extends React.Component {
 
-    onSetTheme = (e) => {
-        this.props.setTheme(e.currentTarget.value);
+type MapStatePropsType = {
+    themeStyle: string
+    isChecked: boolean
+    status: number | null
+    isLoading: boolean
+    responseMessage: string
+}
+
+type MapDispatchPropsType = {
+    setThemeSuccess: (valueTheme: string) => void
+    setResponseMessageSuccess: (responseMessage: string) => void
+    updateCheckboxSuccess: (isChecked: boolean) => void
+    sendMessage: (isChecked: boolean) => void
+}
+type PropsType = MapStatePropsType & MapDispatchPropsType
+
+class Wednesday extends React.Component<PropsType> {
+
+    onSetTheme = (event: MouseEvent<HTMLInputElement>) => {
+        this.props.setThemeSuccess(event.currentTarget.value);
     };
 
-    changeCheckbox = (e) => {
-        this.props.updateCheckbox(e.currentTarget.checked)
+    changeCheckbox = (event: ChangeEvent<HTMLInputElement>) => {
+        this.props.updateCheckboxSuccess(event.currentTarget.checked)
     };
 
     sendMessage = async () => {
@@ -20,7 +42,7 @@ class Wednesday extends React.Component {
     };
 
     closeMessageBlock = () => {
-        this.props.setResponseMessage('');
+        this.props.setResponseMessageSuccess('');
     };
 
     render() {
@@ -67,7 +89,7 @@ class Wednesday extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         themeStyle: state.settings.style,
         isChecked: state.loading.isChecked,
@@ -78,4 +100,5 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, {setTheme, setResponseMessage, updateCheckbox, sendMessage})(Wednesday);
+export default connect<MapStatePropsType, MapDispatchPropsType, {}, AppStateType>(mapStateToProps,
+    {setThemeSuccess, setResponseMessageSuccess, updateCheckboxSuccess, sendMessage})(Wednesday);
