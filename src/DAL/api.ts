@@ -12,11 +12,15 @@ type SendMessageResponseType = {
 }
 
 export const api = {
-    sendMessage: async (isChecked: boolean) =>  {
+    sendMessage: async (isChecked: boolean) => {
         try {
             return await instance.post<SendMessageResponseType>('', {success: isChecked});
-        } catch(err) {
+        } catch (err) {
             return err.response;
         }
     }
+
+    // sendMessage: (isChecked: boolean) => {
+    //     return instance.post<SendMessageResponseType>('', {success: isChecked});
+    // }
 };
