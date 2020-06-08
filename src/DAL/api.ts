@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, {AxiosError} from "axios";
 
 const instance = axios.create({
     baseURL: 'https://neko-cafe-back.herokuapp.com/auth/test'
@@ -7,7 +7,7 @@ const instance = axios.create({
 type SendMessageResponseType = {
     errorText: string
     info: string
-    yourBody: {success: boolean}
+    yourBody: { success: boolean }
     yourQuery: {}
 }
 
@@ -16,11 +16,8 @@ export const api = {
         try {
             return await instance.post<SendMessageResponseType>('', {success: isChecked});
         } catch (err) {
-            return err.response;
+            const axiosError = err as AxiosError<SendMessageResponseType>;
+            return axiosError.response;
         }
     }
-
-    // sendMessage: (isChecked: boolean) => {
-    //     return instance.post<SendMessageResponseType>('', {success: isChecked});
-    // }
 };

@@ -8,8 +8,8 @@ const UPDATE_CHECKED = 'ignatTasks/loadingReducer/UPDATE_CHECKED';
 
 const initialState = {
     isLoading: false as boolean,
-    responseMessage: '' as string,
-    status: null as number | null,
+    responseMessage: '' as string | undefined,
+    status: undefined as number | undefined,
     isChecked: false as boolean
 };
 
@@ -49,14 +49,14 @@ type SetLoadingSuccessType = {
 export const setLoadingSuccess = (isLoading: boolean):SetLoadingSuccessType => ({type: SET_LOADING, isLoading});
 type SetResponseMessageSuccessType = {
     type: typeof SET_RESPONSE_MESSAGE
-    errorText: string
+    errorText: string | undefined
 }
-export const setResponseMessageSuccess = (errorText: string): SetResponseMessageSuccessType => ({type: SET_RESPONSE_MESSAGE, errorText});
+export const setResponseMessageSuccess = (errorText: string | undefined): SetResponseMessageSuccessType => ({type: SET_RESPONSE_MESSAGE, errorText});
 type SetStatusSuccessType = {
     type: typeof SET_STATUS
-    status: number
+    status: number | undefined
 }
-const setStatusSuccess = (status: number): SetStatusSuccessType => ({type: SET_STATUS, status});
+const setStatusSuccess = (status: number | undefined): SetStatusSuccessType => ({type: SET_STATUS, status});
 type UpdateCheckboxSuccessType = {
     type: typeof UPDATE_CHECKED
     isChecked: boolean
@@ -72,8 +72,8 @@ export const sendMessage = (isChecked: boolean) => async (dispatch: Dispatch<Act
     dispatch(setLoadingSuccess(true));
     const response = await api.sendMessage(isChecked);
     dispatch(setLoadingSuccess(false));
-    dispatch(setResponseMessageSuccess(response.data.errorText));
-    dispatch(setStatusSuccess(response.status))
+    dispatch(setResponseMessageSuccess(response?.data.errorText));
+    dispatch(setStatusSuccess(response?.status))
 };
 
 export default loadingReducer;

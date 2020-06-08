@@ -14,9 +14,9 @@ import {AppStateType} from "../../redux/store";
 type MapStatePropsType = {
     themeStyle: string
     isChecked: boolean
-    status: number | null
+    status: number | undefined
     isLoading: boolean
-    responseMessage: string
+    responseMessage: string | undefined
 }
 
 type MapDispatchPropsType = {
