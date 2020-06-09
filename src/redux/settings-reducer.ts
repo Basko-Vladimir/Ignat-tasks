@@ -1,7 +1,7 @@
 const SET_THEME = 'ignatTasks/settingsReducer/SET_THEME';
 
 const initialState = {
-    style: '' as string
+    style: ''
 };
 type InitialStatetype = typeof initialState;
 

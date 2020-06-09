@@ -7,10 +7,10 @@ const SET_STATUS = 'ignatTasks/loadingReducer/SET_STATUS';
 const UPDATE_CHECKED = 'ignatTasks/loadingReducer/UPDATE_CHECKED';
 
 const initialState = {
-    isLoading: false as boolean,
-    responseMessage: '' as string | undefined,
+    isLoading: false,
+    responseMessage: '',
     status: undefined as number | undefined,
-    isChecked: false as boolean
+    isChecked: false
 };
 
 type InitialStateType = typeof initialState;
@@ -49,9 +49,9 @@ type SetLoadingSuccessType = {
 export const setLoadingSuccess = (isLoading: boolean):SetLoadingSuccessType => ({type: SET_LOADING, isLoading});
 type SetResponseMessageSuccessType = {
     type: typeof SET_RESPONSE_MESSAGE
-    errorText: string | undefined
+    errorText: string
 }
-export const setResponseMessageSuccess = (errorText: string | undefined): SetResponseMessageSuccessType => ({type: SET_RESPONSE_MESSAGE, errorText});
+export const setResponseMessageSuccess = (errorText: string): SetResponseMessageSuccessType => ({type: SET_RESPONSE_MESSAGE, errorText});
 type SetStatusSuccessType = {
     type: typeof SET_STATUS
     status: number | undefined
@@ -72,8 +72,8 @@ export const sendMessage = (isChecked: boolean) => async (dispatch: Dispatch<Act
     dispatch(setLoadingSuccess(true));
     const response = await api.sendMessage(isChecked);
     dispatch(setLoadingSuccess(false));
-    dispatch(setResponseMessageSuccess(response?.data.errorText));
-    dispatch(setStatusSuccess(response?.status))
+    dispatch(setResponseMessageSuccess(response ? response.data.errorText : 'Network error'));
+    dispatch(setStatusSuccess(response? response.status: 500))
 };
 
 export default loadingReducer;
